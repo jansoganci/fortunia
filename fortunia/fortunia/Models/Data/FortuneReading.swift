@@ -33,7 +33,7 @@ struct FortuneReading: Codable, Identifiable {
 }
 
 // MARK: - Fortune Reading Types
-enum FortuneReadingType: String, CaseIterable {
+enum FortuneReadingType: String, CaseIterable, Hashable {
     case face = "face"
     case palm = "palm"
     case tarot = "tarot"
@@ -41,19 +41,19 @@ enum FortuneReadingType: String, CaseIterable {
     
     var displayName: String {
         switch self {
-        case .face: return "Face Reading"
-        case .palm: return "Palm Reading"
-        case .tarot: return "Tarot Reading"
-        case .coffee: return "Coffee Reading"
+        case .face: return NSLocalizedString("reading_type_face", comment: "Face Reading") // localized
+        case .palm: return NSLocalizedString("reading_type_palm", comment: "Palm Reading") // localized
+        case .tarot: return NSLocalizedString("reading_type_tarot", comment: "Tarot Reading") // localized
+        case .coffee: return NSLocalizedString("reading_type_coffee", comment: "Coffee Reading") // localized
         }
     }
     
     var description: String {
         switch self {
-        case .face: return "Discover your personality through facial features"
-        case .palm: return "Read your life lines and destiny"
-        case .tarot: return "Get guidance from ancient tarot cards"
-        case .coffee: return "Interpret your future from coffee grounds"
+        case .face: return NSLocalizedString("reading_type_face_desc", comment: "Discover your personality through facial features") // localized
+        case .palm: return NSLocalizedString("reading_type_palm_desc", comment: "Read your life lines and destiny") // localized
+        case .tarot: return NSLocalizedString("reading_type_tarot_desc", comment: "Get guidance from ancient tarot cards") // localized
+        case .coffee: return NSLocalizedString("reading_type_coffee_desc", comment: "Interpret your future from coffee grounds") // localized
         }
     }
     
@@ -75,17 +75,17 @@ enum CulturalOrigin: String, CaseIterable {
     
     var displayName: String {
         switch self {
-        case .chinese: return "Chinese"
-        case .middleEastern: return "Middle Eastern"
-        case .european: return "European"
+        case .chinese: return NSLocalizedString("cultural_origin_chinese", comment: "Chinese") // localized
+        case .middleEastern: return NSLocalizedString("cultural_origin_middle_eastern", comment: "Middle Eastern") // localized
+        case .european: return NSLocalizedString("cultural_origin_european", comment: "European") // localized
         }
     }
     
     var description: String {
         switch self {
-        case .chinese: return "Ancient Chinese divination traditions"
-        case .middleEastern: return "Middle Eastern mystical practices"
-        case .european: return "European fortune telling methods"
+        case .chinese: return NSLocalizedString("cultural_origin_chinese_desc", comment: "Ancient Chinese divination traditions") // localized
+        case .middleEastern: return NSLocalizedString("cultural_origin_middle_eastern_desc", comment: "Middle Eastern mystical practices") // localized
+        case .european: return NSLocalizedString("cultural_origin_european_desc", comment: "European fortune telling methods") // localized
         }
     }
 }
@@ -99,6 +99,16 @@ struct FortuneResult: Codable {
     let culturalOrigin: String
     let processingTime: Double?
     let error: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case success
+        case result
+        case shareCardUrl = "share_card_url"
+        case readingType = "reading_type"
+        case culturalOrigin = "cultural_origin"
+        case processingTime = "processing_time"
+        case error
+    }
 }
 
 // MARK: - Quota Info

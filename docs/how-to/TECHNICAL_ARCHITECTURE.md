@@ -39,6 +39,10 @@
 - **Multi-Language**: NSLocalizedString from Day 1
 - **Cultural Respect**: Authentic fortune traditions
 
+### **🌍 Multilingual System**
+Fortunia supports full bilingual localization (EN + ES) across UI and backend.
+Dynamic language switching powered by LocalizationManager with persistence via UserDefaults.
+
 ---
 
 ## 2. TECH STACK DETAILS
@@ -1525,6 +1529,9 @@ class MemoryManager {
 ---
 
 ## 10. MULTI-LANGUAGE IMPLEMENTATION
+
+✅ **Localization: Fully implemented (English + Spanish)** — supports runtime switching via LocalizationManager.
+All UI screens, backend models, and user-facing text are fully localized.
 
 ### **Localization Setup**
 

@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import FirebaseAnalytics
 
 // MARK: - Base ViewModel
 @MainActor
@@ -22,6 +23,16 @@ class BaseViewModel: ObservableObject {
         errorMessage = error.localizedDescription
         isErrorPresented = true
         isLoading = false
+        
+        // Analytics: Track general error
+        AnalyticsService.shared.logEvent(
+            AnalyticsEvents.ErrorOccurred.name,
+            parameters: AnalyticsEvents.ErrorOccurred.parameters(
+                errorType: "general_error",
+                errorMessage: error.localizedDescription,
+                context: String(describing: type(of: self))
+            )
+        )
     }
     
     func clearError() {

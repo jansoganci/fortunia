@@ -11,6 +11,8 @@ import SwiftUI
 struct SplashScreen: View {
     @State private var isAnimating = false
     @State private var showAuth = false
+    @State private var scale: CGFloat = 0.8
+    @State private var opacity: Double = 0.0
     let onComplete: () -> Void
     
     var body: some View {
@@ -31,42 +33,22 @@ struct SplashScreen: View {
                 
                 // Logo Section
                 VStack(spacing: Spacing.lg) {
-                    // Mystical Orb
-                    Circle()
-                        .fill(
-                            LinearGradient(
-                                colors: [.primary, .accent],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
+                    // App Logo
+                    Image("app-logo")
+                        .resizable()
+                        .scaledToFit()
                         .frame(width: 120, height: 120)
-                        .blur(radius: isAnimating ? 30 : 10)
-                        .scaleEffect(isAnimating ? 1.2 : 0.8)
-                        .animation(
-                            .easeInOut(duration: 2.0)
-                            .repeatForever(autoreverses: true),
-                            value: isAnimating
-                        )
-                        .overlay(
-                            // Inner Glow
-                            Circle()
-                                .fill(
-                                    RadialGradient(
-                                        colors: [
-                                            .white.opacity(0.3),
-                                            .clear
-                                        ],
-                                        center: .center,
-                                        startRadius: 0,
-                                        endRadius: 60
-                                    )
-                                )
-                                .frame(width: 120, height: 120)
+                        .scaleEffect(scale)
+                        .opacity(opacity)
+                        .shadow(
+                            color: Color.primary.opacity(0.3),
+                            radius: 20,
+                            x: 0,
+                            y: 10
                         )
                     
                     // App Title
-                    Text("Fortunia")
+                    Text(LocalizedStringKey("splash_app_name")) // localized
                         .font(.system(size: 48, weight: .heavy, design: .serif))
                         .foregroundColor(.textPrimary)
                         .opacity(isAnimating ? 1.0 : 0.0)
@@ -77,7 +59,7 @@ struct SplashScreen: View {
                         )
                     
                     // Tagline
-                    Text("Discover Your Fortune")
+                    Text(LocalizedStringKey("splash_tagline")) // localized
                         .font(AppTypography.bodyLarge)
                         .foregroundColor(.textSecondary)
                         .opacity(isAnimating ? 1.0 : 0.0)
@@ -128,10 +110,19 @@ struct SplashScreen: View {
     
     // MARK: - Animation Logic
     private func startAnimation() {
-        isAnimating = true
+        // Logo entrance animation
+        withAnimation(.easeOut(duration: 0.8)) {
+            scale = 1.0
+            opacity = 1.0
+        }
         
-        // 1 second delay before transitioning
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        // Start other animations
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            isAnimating = true
+        }
+        
+        // Transition to auth after 2 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             showAuth = true
         }
     }
@@ -143,11 +134,11 @@ struct SplashScreen_Previews: PreviewProvider {
         Group {
             SplashScreen(onComplete: {})
                 .preferredColorScheme(.light)
-                .previewDisplayName("Light Mode")
+                .previewDisplayName(NSLocalizedString("preview_light_mode", comment: "Light mode preview"))
             
             SplashScreen(onComplete: {})
                 .preferredColorScheme(.dark)
-                .previewDisplayName("Dark Mode")
+                .previewDisplayName(NSLocalizedString("preview_dark_mode", comment: "Dark mode preview"))
         }
     }
 }

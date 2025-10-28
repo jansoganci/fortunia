@@ -20,9 +20,32 @@ struct AppConstants {
     
     // MARK: - API Configuration
     struct API {
-        static let baseURL = "https://your-supabase-url.supabase.co"
+        static let baseURL = "https://nnejcjbzspqxsowwnzvh.supabase.co"
         static let timeout: TimeInterval = 30.0
         static let retryCount = 3
+    }
+    
+    // MARK: - Supabase Configuration
+    struct Supabase {
+        static let projectID = "nnejcjbzspqxsowwnzvh"
+        
+        /// Supabase anonymous key - loaded from environment or Info.plist
+        /// SECURITY: Never hardcode this value in source code
+        static var anonKey: String {
+            // Try to load from environment variable first (for CI/CD)
+            if let envKey = ProcessInfo.processInfo.environment["SUPABASE_ANON_KEY"] {
+                return envKey
+            }
+            
+            // Fallback to Info.plist for local development
+            guard let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
+                  let plist = NSDictionary(contentsOfFile: path),
+                  let key = plist["SUPABASE_ANON_KEY"] as? String else {
+                fatalError("SUPABASE_ANON_KEY not found in environment or Info.plist")
+            }
+            
+            return key
+        }
     }
     
     // MARK: - Firebase Configuration
@@ -61,7 +84,31 @@ struct AppConstants {
         static let selectedLanguage = "selectedLanguage"
         static let notificationPermissionAsked = "notificationPermissionAsked"
         static let allowCloudProcessing = "allowCloudProcessing"
+        static let analyticsEnabled = "analyticsEnabled"
     }
+    
+    // MARK: - Analytics Configuration
+    /// Determines if analytics should be enabled
+    /// In DEBUG builds: Uses UserDefaults flag (defaults to false, can be toggled for testing)
+    /// In RELEASE builds: Always returns true (analytics always enabled in production)
+    static var analyticsEnabled: Bool {
+        #if DEBUG
+        // In debug mode, check UserDefaults for explicit toggle
+        // Developers can enable/disable via: UserDefaults.standard.set(true, forKey: "analyticsEnabled")
+        return UserDefaults.standard.bool(forKey: UserDefaultsKeys.analyticsEnabled)
+        #else
+        // In production, analytics is always enabled
+        return true
+        #endif
+    }
+    
+    /// Toggle analytics on/off (DEBUG only)
+    #if DEBUG
+    static func setAnalyticsEnabled(_ enabled: Bool) {
+        UserDefaults.standard.set(enabled, forKey: UserDefaultsKeys.analyticsEnabled)
+        DebugLogger.shared.network("Analytics \(enabled ? "enabled" : "disabled") in debug mode")
+    }
+    #endif
     
     // MARK: - Animation Durations
     struct Animation {
@@ -88,18 +135,34 @@ struct AppConstants {
     
     // MARK: - Error Messages
     struct ErrorMessages {
-        static let networkError = "Network connection error. Please check your internet connection."
-        static let quotaExceeded = "Daily quota exceeded. Upgrade to Premium for unlimited readings."
-        static let imageProcessingError = "Failed to process image. Please try again."
-        static let aiProcessingError = "AI processing failed. Please try again."
-        static let unknownError = "An unexpected error occurred. Please try again."
+        static var networkError: String {
+            return NSLocalizedString("error_network", comment: "Network connection error. Please check your internet connection.")
+        }
+        static var quotaExceeded: String {
+            return NSLocalizedString("error_quota_exceeded", comment: "Daily quota exceeded. Upgrade to Premium for unlimited readings.")
+        }
+        static var imageProcessingError: String {
+            return NSLocalizedString("error_image_processing", comment: "Failed to process image. Please try again.")
+        }
+        static var aiProcessingError: String {
+            return NSLocalizedString("error_ai_processing", comment: "AI processing failed. Please try again.")
+        }
+        static var unknownError: String {
+            return NSLocalizedString("error_unknown", comment: "An unexpected error occurred. Please try again.")
+        }
     }
     
     // MARK: - Success Messages
     struct SuccessMessages {
-        static let readingCompleted = "Your fortune reading is ready!"
-        static let imageUploaded = "Image uploaded successfully"
-        static let quotaConsumed = "Reading completed successfully"
+        static var readingCompleted: String {
+            return NSLocalizedString("success_reading_completed", comment: "Your fortune reading is ready!")
+        }
+        static var imageUploaded: String {
+            return NSLocalizedString("success_image_uploaded", comment: "Image uploaded successfully")
+        }
+        static var quotaConsumed: String {
+            return NSLocalizedString("success_quota_consumed", comment: "Reading completed successfully")
+        }
     }
     
     // MARK: - Legal

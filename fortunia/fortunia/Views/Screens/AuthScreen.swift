@@ -57,12 +57,12 @@ struct AuthScreen: View {
                         
                         // Welcome Text
                         VStack(spacing: Spacing.sm) {
-                            Text("Welcome to Fortunia")
+                            Text(LocalizedStringKey("auth_welcome_title")) // localized
                                 .font(AppTypography.heading1)
                                 .foregroundColor(.textPrimary)
                                 .multilineTextAlignment(.center)
                             
-                            Text("Discover your fortune through ancient wisdom")
+                            Text(LocalizedStringKey("auth_welcome_subtitle")) // localized
                                 .font(AppTypography.bodyMedium)
                                 .foregroundColor(.textSecondary)
                                 .multilineTextAlignment(.center)
@@ -86,7 +86,7 @@ struct AuthScreen: View {
                         
                         // Email/Password Button
                         PrimaryButton(
-                            title: "Continue with Email",
+                            title: NSLocalizedString("auth_continue_with_email", comment: "Continue with Email button"), // localized
                             action: {
                                 showingSignUp = true
                             }
@@ -94,7 +94,7 @@ struct AuthScreen: View {
                         
                         // Guest Mode Button
                         SecondaryButton(
-                            title: "Not Now",
+                            title: NSLocalizedString("auth_not_now", comment: "Not Now button"), // localized
                             action: {
                                 continueAsGuest()
                             }
@@ -105,22 +105,22 @@ struct AuthScreen: View {
                     
                     // Footer
                     VStack(spacing: Spacing.sm) {
-                        Text("By continuing, you agree to our")
+                        Text(LocalizedStringKey("auth_by_continuing")) // localized
                             .font(AppTypography.caption)
                             .foregroundColor(.textSecondary)
                         
                         HStack(spacing: Spacing.xs) {
-                            Button("Terms of Service") {
+                            Button(NSLocalizedString("auth_terms", comment: "Terms of Service")) { // localized
                                 // Open terms
                             }
                             .font(AppTypography.caption)
                             .foregroundColor(.primary)
                             
-                            Text("and")
+                            Text(LocalizedStringKey("auth_and")) // localized
                                 .font(AppTypography.caption)
                                 .foregroundColor(.textSecondary)
                             
-                            Button("Privacy Policy") {
+                            Button(NSLocalizedString("auth_privacy", comment: "Privacy Policy")) { // localized
                                 // Open privacy
                             }
                             .font(AppTypography.caption)
@@ -130,6 +130,13 @@ struct AuthScreen: View {
                 }
                 .padding(.horizontal, Spacing.xl)
                 .padding(.vertical, Spacing.xxl)
+            }
+            
+            // Loading Overlay
+            if viewModel.isLoading {
+                Color.black.opacity(0.4)
+                    .ignoresSafeArea()
+                MysticalLoadingView()
             }
         }
         .sheet(isPresented: $showingSignUp) {
@@ -141,8 +148,8 @@ struct AuthScreen: View {
                 onComplete: handleEmailAuth
             )
         }
-        .alert("Error", isPresented: $viewModel.isErrorPresented) {
-            Button("OK") {
+        .alert(NSLocalizedString("auth_error", comment: "Error alert title"), isPresented: $viewModel.isErrorPresented) { // localized
+            Button(NSLocalizedString("auth_ok", comment: "OK button")) { // localized
                 viewModel.clearError()
             }
         } message: {
@@ -190,8 +197,12 @@ struct AuthScreen: View {
     }
     
     private func continueAsGuest() {
-        viewModel.continueAsGuest()
-        onAuthComplete()
+        Task {
+            await viewModel.continueAsGuest()
+            await MainActor.run {
+                onAuthComplete()
+            }
+        }
     }
 }
 
@@ -209,11 +220,11 @@ struct EmailAuthSheet: View {
             VStack(spacing: Spacing.lg) {
                 // Header
                 VStack(spacing: Spacing.sm) {
-                    Text(isSignUpMode ? "Create Account" : "Sign In")
+                    Text(isSignUpMode ? LocalizedStringKey("auth_create_account") : LocalizedStringKey("auth_sign_in")) // localized
                         .font(AppTypography.heading2)
                         .foregroundColor(.textPrimary)
                     
-                    Text(isSignUpMode ? "Join the mystical journey" : "Welcome back")
+                    Text(isSignUpMode ? LocalizedStringKey("auth_join_mystical") : LocalizedStringKey("auth_welcome_back")) // localized
                         .font(AppTypography.bodyMedium)
                         .foregroundColor(.textSecondary)
                 }
@@ -223,14 +234,14 @@ struct EmailAuthSheet: View {
                 VStack(spacing: Spacing.md) {
                     // Email Field
                     AppTextField(
-                        placeholder: "Email",
+                        placeholder: NSLocalizedString("auth_email", comment: "Email placeholder"), // localized
                         text: $email,
                         icon: "envelope"
                     )
                     
                     // Password Field
                     AppTextField(
-                        placeholder: "Password",
+                        placeholder: NSLocalizedString("auth_password", comment: "Password placeholder"), // localized
                         text: $password,
                         icon: "lock"
                     )
@@ -238,7 +249,7 @@ struct EmailAuthSheet: View {
                     // Confirm Password (Sign Up only)
                     if isSignUpMode {
                         AppTextField(
-                            placeholder: "Confirm Password",
+                            placeholder: NSLocalizedString("auth_confirm_password", comment: "Confirm Password placeholder"), // localized
                             text: $confirmPassword,
                             icon: "lock"
                         )
@@ -247,7 +258,7 @@ struct EmailAuthSheet: View {
                 
                 // Action Button
                 PrimaryButton(
-                    title: isSignUpMode ? "Create Account" : "Sign In",
+                    title: isSignUpMode ? NSLocalizedString("auth_create_account", comment: "Create Account") : NSLocalizedString("auth_sign_in", comment: "Sign In"), // localized
                     action: onComplete
                 )
                 .disabled(!isFormValid)
@@ -258,11 +269,11 @@ struct EmailAuthSheet: View {
                     clearForm()
                 }) {
                     HStack {
-                        Text(isSignUpMode ? "Already have an account?" : "Don't have an account?")
+                        Text(isSignUpMode ? LocalizedStringKey("auth_already_have_account") : LocalizedStringKey("auth_dont_have_account")) // localized
                             .font(AppTypography.bodySmall)
                             .foregroundColor(.textSecondary)
                         
-                        Text(isSignUpMode ? "Sign In" : "Sign Up")
+                        Text(isSignUpMode ? LocalizedStringKey("auth_sign_in") : LocalizedStringKey("auth_sign_up")) // localized
                             .font(AppTypography.bodySmall)
                             .fontWeight(.semibold)
                             .foregroundColor(.primary)
@@ -275,7 +286,7 @@ struct EmailAuthSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
+                    Button(NSLocalizedString("auth_cancel", comment: "Cancel button")) { // localized
                         dismiss()
                     }
                     .foregroundColor(.primary)
@@ -347,11 +358,11 @@ struct AuthScreen_Previews: PreviewProvider {
         Group {
             AuthScreen(onAuthComplete: {})
                 .preferredColorScheme(.light)
-                .previewDisplayName("Light Mode")
+                .previewDisplayName(NSLocalizedString("preview_light_mode", comment: "Light mode preview"))
             
             AuthScreen(onAuthComplete: {})
                 .preferredColorScheme(.dark)
-                .previewDisplayName("Dark Mode")
+                .previewDisplayName(NSLocalizedString("preview_dark_mode", comment: "Dark mode preview"))
         }
     }
 }

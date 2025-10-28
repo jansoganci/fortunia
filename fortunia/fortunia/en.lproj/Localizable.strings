@@ -1,0 +1,448 @@
+// 
+// Localizable.strings (English)
+// fortunia
+//
+// Created by localization engineer
+//
+
+/* Welcome Messages */
+"welcome_message" = "Welcome to Fortunia!";
+
+/* Auth Screen */
+"auth_welcome_title" = "Welcome to Fortunia";
+"auth_welcome_subtitle" = "Discover your fortune through ancient wisdom";
+"auth_continue_with_email" = "Continue with Email";
+"auth_not_now" = "Not Now";
+"auth_terms" = "Terms of Service";
+"auth_privacy" = "Privacy Policy";
+"auth_by_continuing" = "By continuing, you agree to our";
+"auth_and" = "and";
+"auth_create_account" = "Create Account";
+"auth_sign_in" = "Sign In";
+"auth_welcome_back" = "Welcome back";
+"auth_join_mystical" = "Join the mystical journey";
+"auth_email" = "Email";
+"auth_password" = "Password";
+"auth_confirm_password" = "Confirm Password";
+"auth_already_have_account" = "Already have an account?";
+"auth_dont_have_account" = "Don't have an account?";
+"auth_sign_up" = "Sign Up";
+"auth_cancel" = "Cancel";
+"auth_error" = "Error";
+"auth_ok" = "OK";
+
+/* Splash Screen */
+"splash_app_name" = "Fortunia";
+"splash_tagline" = "Discover Your Fortune";
+
+/* Home Screen */
+"home_discover_fortune" = "Discover Your Fortune";
+"home_choose_reading_method" = "Choose your reading method";
+"home_face_reading" = "Face Reading";
+"home_face_reading_desc" = "Discover your personality";
+"home_palm_reading" = "Palm Reading";
+"home_palm_reading_desc" = "Read your life lines";
+"home_tarot_cards" = "Tarot Cards";
+"home_tarot_cards_desc" = "Get guidance from cards";
+"home_coffee_reading" = "Coffee Reading";
+"home_coffee_reading_desc" = "Interpret coffee grounds";
+
+/* Result Screen */
+"result_your_face_reading" = "Your Face Reading";
+"result_your_palm_reading" = "Your Palm Reading";
+"result_your_coffee_reading" = "Your Coffee Reading";
+"result_your_tarot_reading" = "Your Tarot Reading";
+"result_your_reading" = "Your Face Reading"; // Fallback for backward compatibility
+"result_heading" = "A Journey of a Thousand Miles Begins with a Single Step";
+"result_text" = "The lines on your forehead suggest a path of creativity and exploration. Your strong jawline indicates determination and resilience in the face of challenges. Trust your intuition in the coming weeks, as a significant opportunity for personal growth will present itself. Embrace change, for it will lead you to a future brighter than you can imagine.";
+"result_disclaimer" = "For entertainment purposes only. Not a substitute for professional, medical, legal, or financial advice.";
+"result_share_fortune" = "Share Your Fortune";
+"result_get_another_reading" = "Get Another Reading";
+
+/* Processing Screen */
+"processing_reading_fortune" = "Reading your fortune...";
+"capture_essence" = "Capture Your Essence";
+"capture_essence_subtitle" = "For the best reading, please provide a clear, forward-facing photo.";
+
+/* Supabase Error Messages */
+"supabase_invalid_image_data" = "Failed to compress image data";
+"supabase_upload_failed" = "Image upload failed";
+"supabase_invalid_url" = "Invalid Supabase URL configuration";
+"supabase_function_failed" = "Edge function failed";
+"supabase_auth_failed" = "Authentication failed";
+"supabase_network_error" = "Network connection error";
+"supabase_quota_exceeded" = "Daily quota exceeded";
+"supabase_ai_failed" = "AI processing failed";
+
+/* Supabase Success Messages */
+"supabase_image_uploaded" = "Image uploaded successfully";
+"supabase_function_executed" = "Edge function executed successfully";
+"supabase_auth_success" = "Authentication successful";
+"supabase_quota_consumed" = "Quota consumed successfully";
+
+/* Network Error Messages */
+"network_invalid_url" = "Invalid URL";
+"network_no_data" = "No data received";
+"network_decoding_error" = "Failed to decode response";
+"network_server_error" = "Server error";
+"network_network_error" = "Network error";
+"network_unknown_error" = "Unknown error";
+
+/* Language Selector */
+"Select Language" = "Select Language";
+"current_language_desc" = "Change the app's language. The app will update immediately.";
+"Current Language:" = "Current Language:";
+"Choose Language:" = "Choose Language:";
+"language_change_info" = "The app will restart language immediately when you change it.";
+"Language Settings" = "Language Settings";
+"Change Language" = "Change Language";
+"Language" = "Language";
+"Profile" = "Profile";
+
+/* Theme Settings */
+"Theme Settings" = "Theme Settings";
+"Theme" = "Theme";
+"processing_error_title" = "Processing Error";
+"ok_button" = "OK";
+"premium_title" = "Premium";
+
+/* Tab Bar */
+"tab_home" = "Home";
+"tab_explore" = "Explore";
+"tab_history" = "History";
+"tab_profile" = "Profile";
+
+/* History Screen */
+"history_title" = "History";
+"history_loading" = "Loading your history...";
+"history_empty_title" = "No Readings Yet";
+"history_empty_subtitle" = "Your fortune readings will appear here";
+"history_delete" = "Delete";
+
+/* Profile Premium Card */
+"unlock_premium" = "Unlock Premium";
+"upgrade_to_premium_desc" = "Get unlimited readings and exclusive features";
+
+/* Profile User Section */
+"tap_to_edit_birth_info" = "Tap to edit birth information";
+
+/* Profile Section Headers */
+"legal" = "Legal";
+"account" = "Account";
+
+/* Actions */
+"sign_out" = "Sign Out";
+"sign_out_confirmation" = "Are you sure you want to sign out?";
+"cancel_button" = "Cancel";
+"done_button" = "Done";
+
+/* Legal */
+"privacy_policy" = "Privacy Policy";
+"terms_of_service" = "Terms of Service";
+
+/* Quota/Daily Readings */
+"quota_daily_readings" = "Daily Readings";
+"quota_unlimited" = "Unlimited";
+"quota_remaining" = "remaining";
+"quota_upgrade_button" = "Upgrade";
+
+/* Premium Badge */
+"badge_premium" = "PRO";
+
+/* Birth Info Modal */
+"birth_details_title" = "Your Birth Details";
+"birth_date_picker" = "Birth Date";
+"birth_time_picker" = "Birth Time";
+"birth_city_placeholder" = "City of Birth";
+"birth_country_placeholder" = "Country of Birth";
+"birth_save_continue_button" = "Save & Continue";
+"birth_cancel_button" = "Cancel";
+"birth_save_success" = "Birth details saved successfully";
+"birth_save_error" = "Failed to save birth details";
+"birth_loading" = "Saving...";
+"birth_next_button" = "Next";
+"birth_date_step_title" = "Birth Date & Time";
+"birth_date_step_subtitle" = "When were you born?";
+"birth_location_step_title" = "Birth Location";
+"birth_location_step_subtitle" = "Where were you born?";
+
+/* Face Reading Intro */
+"face_reading_intro_title" = "Face Reading";
+"face_reading_intro_desc" = "Discover the secrets hidden in your facial features. Our AI analyzes your unique traits to reveal insights about your personality, strengths, and future path.";
+"face_reading_nav_title" = "Face Reading";
+
+/* Palm Reading Intro */
+"palm_reading_intro_title" = "Palm Reading";
+"palm_reading_intro_desc" = "Unveil the mysteries written in your hands. Our AI analyzes your palm lines to reveal insights about your life journey, personality traits, and future possibilities.";
+"palm_reading_nav_title" = "Palm Reading";
+
+/* Coffee Reading Intro */
+"coffee_reading_intro_title" = "Coffee Reading";
+"coffee_reading_intro_desc" = "Interpret the patterns in your coffee grounds. Our AI analyzes the unique formations to provide insights about your past, present, and future.";
+"coffee_reading_nav_title" = "Coffee Reading";
+
+"intro_get_started_button" = "Get Started";
+
+/* Photo Capture */
+"photo_capture_title" = "Capture Your Essence";
+"photo_capture_subtitle_face" = "For the best reading, please provide a clear, forward-facing photo of your face.";
+"photo_capture_subtitle_palm" = "For the best reading, please provide a clear photo of your palm with lines visible.";
+"photo_capture_subtitle_coffee" = "For the best reading, please provide a clear photo of your coffee cup with the grounds visible.";
+"photo_capture_subtitle" = "For the best reading, please provide a clear photo.";
+"photo_take_button" = "Take Photo";
+"photo_choose_library_button" = "Choose from Library";
+"photo_nav_title" = "Add Photo";
+
+/* Processing Screen */
+"processing_reading_message" = "Reading your fortune...";
+
+/* Coming Soon */
+"coming_soon_title" = "Coming Soon";
+"coming_soon_subtitle" = "We're working on something magical for you.";
+
+/* Fortune Reading Types (Model) */
+"reading_type_face" = "Face Reading";
+"reading_type_face_desc" = "Discover your personality through facial features";
+"reading_type_palm" = "Palm Reading";
+"reading_type_palm_desc" = "Read your life lines and destiny";
+"reading_type_tarot" = "Tarot Reading";
+"reading_type_tarot_desc" = "Get guidance from ancient tarot cards";
+"reading_type_coffee" = "Coffee Reading";
+"reading_type_coffee_desc" = "Interpret your future from coffee grounds";
+
+/* Cultural Origins */
+"cultural_origin_chinese" = "Chinese";
+"cultural_origin_chinese_desc" = "Ancient Chinese divination traditions";
+"cultural_origin_middle_eastern" = "Middle Eastern";
+"cultural_origin_middle_eastern_desc" = "Middle Eastern mystical practices";
+"cultural_origin_european" = "European";
+"cultural_origin_european_desc" = "European fortune telling methods";
+"cultural_origin_turkish" = "Turkish";
+
+/* Debug Logging Messages */
+"debug_auth_success" = "Success";
+"debug_auth_failed" = "Failed";
+"debug_auth_signup" = "Sign Up";
+"debug_auth_signin" = "Sign In";
+"debug_auth_signout" = "Sign Out";
+"debug_auth_reset" = "Password Reset";
+"debug_auth_refresh" = "Session Refresh";
+"debug_auth_delete" = "Account Deletion";
+
+"debug_ai_success" = "Processing completed";
+"debug_ai_failed" = "Processing failed";
+
+"debug_network_success" = "Request successful";
+"debug_network_failed" = "Request failed";
+
+"debug_storage_success" = "Operation completed";
+"debug_storage_failed" = "Operation failed";
+"debug_storage_upload" = "Upload";
+"debug_storage_download" = "Download";
+"debug_storage_delete" = "Delete";
+
+"debug_edge_success" = "Function executed";
+"debug_edge_failed" = "Function failed";
+
+"debug_category_supabase" = "SUPABASE";
+"debug_category_analytics" = "ANALYTICS";
+"debug_category_performance" = "PERFORMANCE";
+
+/* Analytics Event Names */
+"analytics_app_open" = "app_open";
+"analytics_signup_completed" = "signup_completed";
+"analytics_reading_requested" = "reading_requested";
+"analytics_reading_completed" = "reading_completed";
+"analytics_share_tapped" = "share_tapped";
+"analytics_subscription_purchased" = "subscription_purchased";
+"analytics_paywall_shown" = "paywall_shown";
+"analytics_session_start" = "session_start";
+"analytics_session_end" = "session_end";
+"analytics_error_occurred" = "error_occurred";
+
+/* Analytics Parameter Names */
+"analytics_param_method" = "method";
+"analytics_param_reading_type" = "reading_type";
+"analytics_param_cultural_origin" = "cultural_origin";
+"analytics_param_is_premium" = "is_premium";
+"analytics_param_platform" = "platform";
+"analytics_param_tier" = "tier";
+"analytics_param_trigger" = "trigger";
+"analytics_param_session_id" = "session_id";
+"analytics_param_duration" = "duration";
+"analytics_param_error_type" = "error_type";
+"analytics_param_error_message" = "error_message";
+"analytics_param_context" = "context";
+
+/* Analytics Parameter Values */
+"analytics_value_email" = "email";
+"analytics_value_apple" = "apple";
+"analytics_value_google" = "google";
+"analytics_value_guest" = "guest";
+"analytics_value_face" = "face";
+"analytics_value_palm" = "palm";
+"analytics_value_tarot" = "tarot";
+"analytics_value_coffee" = "coffee";
+"analytics_value_chinese" = "chinese";
+"analytics_value_middle_eastern" = "middle_eastern";
+"analytics_value_european" = "european";
+"analytics_value_turkish" = "turkish";
+"analytics_value_facebook" = "facebook";
+"analytics_value_twitter" = "twitter";
+"analytics_value_instagram" = "instagram";
+"analytics_value_whatsapp" = "whatsapp";
+"analytics_value_telegram" = "telegram";
+"analytics_value_basic" = "basic";
+"analytics_value_premium" = "premium";
+"analytics_value_pro" = "pro";
+"analytics_value_quota_exceeded" = "quota_exceeded";
+"analytics_value_reading_completed" = "reading_completed";
+"analytics_value_subscription_purchased" = "subscription_purchased";
+"analytics_value_paywall_shown" = "paywall_shown";
+"analytics_value_auth_error" = "auth_error";
+"analytics_value_network_error" = "network_error";
+"analytics_value_ai_error" = "ai_error";
+"analytics_value_general_error" = "general_error";
+"analytics_value_crash_error" = "crash_error";
+
+/* Preview Display Names */
+"preview_light_mode" = "Light Mode";
+"preview_dark_mode" = "Dark Mode";
+
+/* Photo Capture */
+"photo_capture_title" = "Add Your Photo";
+"photo_capture_subtitle" = "Take a clear photo or choose from your library";
+"photo_take_button" = "Take Photo";
+"photo_choose_library_button" = "Choose from Library";
+"photo_continue_button" = "Continue";
+"photo_retake_button" = "Retake Photo";
+"photo_preview_placeholder" = "Your photo will appear here";
+"photo_uploading" = "Uploading photo...";
+"photo_error_title" = "Photo Error";
+"photo_error_ok" = "OK";
+"photo_upload_error" = "Failed to upload photo. Please try again.";
+"photo_invalid_image" = "Invalid image selected. Please try again.";
+"photo_camera_permission" = "camera";
+"photo_library_permission" = "photo library";
+"photo_permission_denied" = "Permission denied for %@. Please enable access in Settings.";
+
+/* Share Functionality */
+"share_fortune_title" = "My Fortune Reading";
+"share_reading_type" = "Reading Type";
+"share_app_attribution" = "Get your own reading at fortunia.app";
+"share_error_title" = "Share Error";
+"share_error_ok" = "OK";
+"share_error_generation_failed" = "Failed to generate share card: %@";
+"share_error_invalid_url" = "Invalid share card URL";
+"share_error_invalid_image" = "Invalid share card image data";
+"share_error_network" = "Network error while loading share card";
+"result_generating_share_card" = "Generating Share Card...";
+"result_sample_text" = "Your mystical journey reveals great wisdom and prosperity ahead. The stars align in your favor, bringing opportunities for growth and happiness.";
+
+/* Network Connectivity */
+"no_internet_title" = "No Internet Connection";
+"no_internet_message" = "Please check your network and try again.";
+"try_again_button" = "Try Again";
+"close_button" = "Close";
+"network_status_connected" = "Connected";
+"network_status_disconnected" = "Disconnected";
+
+/* Component Test Strings */
+"test_primary_button" = "Primary Button";
+"test_secondary_button" = "Secondary Button";
+"test_loading_button" = "Loading...";
+"test_disabled_button" = "Disabled";
+
+/* Quota Management Strings */
+"quota_loading" = "Loading...";
+"quota_exhausted_message" = "You've reached your daily limit. Upgrade for more readings.";
+
+/* Reading Start View */
+"reading_start_ready_title" = "Ready to Begin?";
+"reading_start_quota_warning" = "This will use one of your daily free readings";
+"reading_start_reading_type_label" = "Reading Type:";
+"reading_start_cultural_origin_label" = "Cultural Origin:";
+"reading_start_processing_time" = "Processing time: ~10 seconds";
+"reading_start_processing" = "Processing...";
+"reading_start_button" = "Start Reading";
+"reading_start_cancel" = "Cancel";
+"reading_start_error_title" = "Error";
+"reading_start_ok" = "OK";
+"reading_start_nav_title" = "Reading Setup";
+"reading_start_checking_quota" = "Checking quota...";
+"reading_start_remaining_readings" = "%d readings remaining today";
+"reading_start_not_authenticated" = "User not authenticated";
+"reading_start_failed" = "Failed to start reading: %@";
+
+/* Paywall */
+"paywall_title" = "Unlock Unlimited Readings ✨";
+"paywall_subtitle" = "Get unlimited fortune readings, detailed reports, and premium features";
+"paywall_monthly_title" = "Monthly";
+"paywall_yearly_title" = "Yearly";
+"paywall_monthly_price" = "$9";
+"paywall_yearly_price" = "$55";
+"paywall_per_month" = "per month";
+"paywall_per_year" = "per year";
+"paywall_monthly_tagline" = "Best for casual users";
+"paywall_yearly_tagline" = "Best value for regular users";
+"paywall_upgrade_button" = "Upgrade to Premium";
+"paywall_restore_button" = "Restore Purchases";
+"paywall_close_button" = "Close";
+"paywall_coming_soon_title" = "Premium Coming Soon";
+"paywall_coming_soon_message" = "Premium features will be available after App Store review. Thank you for your patience!";
+"paywall_save_annually" = "Save 40% annually";
+"paywall_recommended" = "RECOMMENDED";
+"paywall_feature_unlimited" = "Unlimited daily readings";
+"paywall_feature_reports" = "Detailed 10-page reports";
+"paywall_feature_share_cards" = "HD share cards (no watermark)";
+"paywall_feature_history" = "Reading history & trends";
+"paywall_feature_priority" = "Priority processing (< 5 seconds)";
+"paywall_feature_adfree" = "Ad-free experience";
+
+/* Permission Modals */
+"permission_camera_title" = "Allow Camera Access";
+"permission_camera_message" = "We need access to your camera to capture photos for your fortune reading 🌙";
+"permission_library_title" = "Allow Photo Library Access";
+"permission_library_message" = "We need access to your photo library to choose images for your fortune reading 🌙";
+"permission_allow_button" = "Allow Access";
+"permission_not_now_button" = "Not Now";
+"permission_cancel_button" = "Cancel";
+
+/* Permission Denied Alerts */
+"permission_camera_denied_title" = "Camera Access Needed";
+"permission_camera_denied_message" = "Please enable camera access in Settings to continue your mystical journey.";
+"permission_library_denied_title" = "Photo Library Access Needed";
+"permission_library_denied_message" = "Please enable photo library access in Settings to continue your mystical journey.";
+"permission_open_settings_button" = "Open Settings";
+
+/* Generic Alerts */
+"alert_success_title" = "Success";
+"alert_error_title" = "Error";
+"alert_ok_button" = "OK";
+
+/* Constants Error Messages */
+"error_network" = "Network connection error. Please check your internet connection.";
+"error_quota_exceeded" = "Daily quota exceeded. Upgrade to Premium for unlimited readings.";
+"error_image_processing" = "Failed to process image. Please try again.";
+"error_ai_processing" = "AI processing failed. Please try again.";
+"error_unknown" = "An unexpected error occurred. Please try again.";
+"success_reading_completed" = "Your fortune reading is ready!";
+"success_image_uploaded" = "Image uploaded successfully";
+"success_quota_consumed" = "Reading completed successfully";
+
+/* Explore Page */
+"explore_title" = "Explore";
+"explore_daily_horoscope" = "Daily Horoscope";
+"explore_weekly_forecast" = "Weekly Forecast";
+"explore_cultural_spotlight" = "Cultural Spotlight";
+"explore_discover_traditions" = "Discover ancient fortune traditions from around the world";
+"explore_get_personal_reading" = "Get Personal Reading";
+"explore_no_birth_info" = "Add your birth info for personalized horoscope";
+"horoscope_love" = "Love";
+"horoscope_career" = "Career";
+"horoscope_health" = "Health";
+"birth_info_required" = "Birth Info Required";
+"birth_info_required_message" = "Please add your birth info to get personalized horoscope";
+"later_button" = "Later";
+"add_button" = "Add";
+"done_button" = "Done";

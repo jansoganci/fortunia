@@ -7,77 +7,75 @@
 
 import SwiftUI
 
+// MARK: - Helper Function for Hex Conversion
+private func colorFromHex(_ hex: String) -> Color {
+    let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+    var int: UInt64 = 0
+    Scanner(string: hex).scanHexInt64(&int)
+    let a, r, g, b: UInt64
+    switch hex.count {
+    case 3: // RGB (12-bit)
+        (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+    case 6: // RGB (24-bit)
+        (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+    case 8: // ARGB (32-bit)
+        (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+    default:
+        (a, r, g, b) = (1, 1, 1, 0)
+    }
+    
+    return Color(
+        .sRGB,
+        red: Double(r) / 255,
+        green: Double(g) / 255,
+        blue:  Double(b) / 255,
+        opacity: Double(a) / 255
+    )
+}
+
 // MARK: - Color System
 extension Color {
     
-    // MARK: - Primary Colors
-    static let primary = Color("Primary")
-    static let secondary = Color("Secondary")
-    static let accent = Color("Accent")
+    // MARK: - Primary Colors (Dynamic Light/Dark Mode)
+    static let primary = Color(light: colorFromHex("#9B86BD"), dark: colorFromHex("#8B7AB8"))
+    static let secondary = Color(light: colorFromHex("#D4A5A5"), dark: colorFromHex("#D4A5A5"))
+    static let accent = Color(light: colorFromHex("#D4A5A5"), dark: colorFromHex("#E8B298"))
     
-    // MARK: - Text Colors
-    static let textPrimary = Color("TextPrimary")
-    static let textSecondary = Color("TextSecondary")
-    static let textTertiary = Color("TextTertiary")
+    // MARK: - Text Colors (Dynamic Light/Dark Mode)
+    static let textPrimary = Color(light: colorFromHex("#1A1625"), dark: colorFromHex("#FFFFFF"))
+    static let textSecondary = Color(light: colorFromHex("#6B5E7A"), dark: colorFromHex("#B8B0C8"))
+    static let textTertiary = Color(light: colorFromHex("#B8B0C8"), dark: colorFromHex("#6B5E7A"))
     
-    // MARK: - Background Colors
-    static let backgroundPrimary = Color("BackgroundPrimary")
-    static let backgroundSecondary = Color("BackgroundSecondary")
-    static let surface = Color("Surface")
+    // MARK: - Background Colors (Dynamic Light/Dark Mode)
+    static let backgroundPrimary = Color(light: colorFromHex("#F7F5F0"), dark: colorFromHex("#1A1625"))
+    static let backgroundSecondary = Color(light: colorFromHex("#F5F5F5"), dark: colorFromHex("#2D2438"))
+    static let surface = Color(light: colorFromHex("#FFFFFF"), dark: colorFromHex("#2D2438"))
     
-    // MARK: - Status Colors
-    static let success = Color("Success")
-    static let warning = Color("Warning")
-    static let error = Color("Error")
-    static let info = Color("Info")
+    // MARK: - Status Colors (Dynamic Light/Dark Mode)
+    static let success = Color(light: colorFromHex("#4CAF50"), dark: colorFromHex("#7BC9A6"))
+    static let warning = Color(light: colorFromHex("#FFA726"), dark: colorFromHex("#F4C542"))
+    static let error = Color(light: colorFromHex("#EF5350"), dark: colorFromHex("#E57373"))
+    static let info = Color(light: colorFromHex("#42A5F5"), dark: colorFromHex("#64B5F6"))
     
-    // MARK: - Fortune Reading Colors
-    static let mystical = Color("Mystical")
-    static let spiritual = Color("Spiritual")
-    static let cosmic = Color("Cosmic")
+    // MARK: - Fortune Reading Colors (Dynamic Light/Dark Mode)
+    static let mystical = Color(light: colorFromHex("#9B86BD"), dark: colorFromHex("#8B7AB8"))
+    static let spiritual = Color(light: colorFromHex("#D4A5A5"), dark: colorFromHex("#E8B298"))
+    static let cosmic = Color(light: colorFromHex("#000000"), dark: colorFromHex("#1A1625"))
 }
 
-// MARK: - Color Definitions (Fallback)
+// MARK: - Dark Mode Support Helper
 extension Color {
-    
-    // MARK: - Primary Colors (Fallback)
-    static let primaryFallback = Color(red: 0.545, green: 0.361, blue: 0.965) // #8B5CF6
-    static let secondaryFallback = Color(red: 0.996, green: 0.596, blue: 0.588) // #FE9896
-    static let accentFallback = Color(red: 0.996, green: 0.596, blue: 0.588) // #FE9896
-    
-    // MARK: - Text Colors (Fallback)
-    static let textPrimaryFallback = Color(red: 0.133, green: 0.133, blue: 0.133) // #222222
-    static let textSecondaryFallback = Color(red: 0.502, green: 0.502, blue: 0.502) // #808080
-    static let textTertiaryFallback = Color(red: 0.741, green: 0.741, blue: 0.741) // #BDBDBD
-    
-    // MARK: - Background Colors (Fallback)
-    static let backgroundPrimaryFallback = Color(red: 0.980, green: 0.980, blue: 0.980) // #FAFAFA
-    static let backgroundSecondaryFallback = Color(red: 0.961, green: 0.961, blue: 0.961) // #F5F5F5
-    static let surfaceFallback = Color.white
-    
-    // MARK: - Status Colors (Fallback)
-    static let successFallback = Color(red: 0.200, green: 0.780, blue: 0.349) // #33C759
-    static let warningFallback = Color(red: 1.000, green: 0.584, blue: 0.000) // #FF9500
-    static let errorFallback = Color(red: 0.957, green: 0.263, blue: 0.212) // #F44336
-    static let infoFallback = Color(red: 0.000, green: 0.478, blue: 1.000) // #007AFF
-    
-    // MARK: - Fortune Reading Colors (Fallback)
-    static let mysticalFallback = Color(red: 0.545, green: 0.361, blue: 0.965) // #8B5CF6
-    static let spiritualFallback = Color(red: 0.996, green: 0.596, blue: 0.588) // #FE9896
-    static let cosmicFallback = Color(red: 0.000, green: 0.000, blue: 0.000) // #000000
-}
-
-// MARK: - Dark Mode Support
-extension Color {
-    
-    // MARK: - Dynamic Colors
-    static let dynamicPrimary = Color.primary
-    static let dynamicSecondary = Color.secondary
-    static let dynamicTextPrimary = Color.textPrimary
-    static let dynamicTextSecondary = Color.textSecondary
-    static let dynamicBackgroundPrimary = Color.backgroundPrimary
-    static let dynamicBackgroundSecondary = Color.backgroundSecondary
-    static let dynamicSurface = Color.surface
+    /// Creates a dynamic color that adapts to light/dark mode
+    init(light: Color, dark: Color) {
+        self.init(UIColor { traitCollection in
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return UIColor(dark)
+            default:
+                return UIColor(light)
+            }
+        })
+    }
 }
 
 // MARK: - Color Utilities
@@ -85,28 +83,7 @@ extension Color {
     
     /// Creates a color from hex string
     init(hex: String) {
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int: UInt64 = 0
-        Scanner(string: hex).scanHexInt64(&int)
-        let a, r, g, b: UInt64
-        switch hex.count {
-        case 3: // RGB (12-bit)
-            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6: // RGB (24-bit)
-            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8: // ARGB (32-bit)
-            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default:
-            (a, r, g, b) = (1, 1, 1, 0)
-        }
-        
-        self.init(
-            .sRGB,
-            red: Double(r) / 255,
-            green: Double(g) / 255,
-            blue:  Double(b) / 255,
-            opacity: Double(a) / 255
-        )
+        self = colorFromHex(hex)
     }
     
     /// Returns hex string representation

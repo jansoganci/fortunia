@@ -17,6 +17,9 @@
 		C5B557232EAC1B7D001A31FB /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = C5B557222EAC1B7D001A31FB /* Functions */; };
 		C5B557252EAC1B7D001A31FB /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = C5B557242EAC1B7D001A31FB /* Storage */; };
 		C5B557282EAC1B8D001A31FB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C5B557272EAC1B8D001A31FB /* Kingfisher */; };
+		C5B5580E2EACC420001A31FB /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = C5B5580D2EACC420001A31FB /* PostgREST */; };
+		C5B558102EACC420001A31FB /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = C5B5580F2EACC420001A31FB /* Realtime */; };
+		C5B558122EACC420001A31FB /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = C5B558112EACC420001A31FB /* Supabase */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,13 +42,16 @@
 				C5B5571B2EAC1AFC001A31FB /* FalClient in Frameworks */,
 				C5B557182EAC1ADC001A31FB /* FirebaseMessaging in Frameworks */,
 				C5B557232EAC1B7D001A31FB /* Functions in Frameworks */,
+				C5B558102EACC420001A31FB /* Realtime in Frameworks */,
 				C5B557162EAC1ADC001A31FB /* FirebaseCrashlytics in Frameworks */,
 				C5B557282EAC1B8D001A31FB /* Kingfisher in Frameworks */,
 				C5B557212EAC1B7D001A31FB /* Auth in Frameworks */,
+				C5B5580E2EACC420001A31FB /* PostgREST in Frameworks */,
 				C5B557142EAC1ADC001A31FB /* FirebaseCore in Frameworks */,
 				C5B557252EAC1B7D001A31FB /* Storage in Frameworks */,
 				C5B557122EAC1ADC001A31FB /* FirebaseAnalytics in Frameworks */,
 				C5B5571E2EAC1B0E001A31FB /* Adapty in Frameworks */,
+				C5B558122EACC420001A31FB /* Supabase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +104,9 @@
 				C5B557222EAC1B7D001A31FB /* Functions */,
 				C5B557242EAC1B7D001A31FB /* Storage */,
 				C5B557272EAC1B8D001A31FB /* Kingfisher */,
+				C5B5580D2EACC420001A31FB /* PostgREST */,
+				C5B5580F2EACC420001A31FB /* Realtime */,
+				C5B558112EACC420001A31FB /* Supabase */,
 			);
 			productName = fortunia;
 			productReference = C5B557022EAC11CC001A31FB /* fortunia.app */;
@@ -123,6 +132,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				es,
 				Base,
 			);
 			mainGroup = C5B556F92EAC11CC001A31FB;
@@ -298,6 +308,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Fortunia | Fortune Teller";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses your camera to take a photo for face readings.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app may access the microphone during video readings.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app accesses your photo library to upload images for readings.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -333,6 +346,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Fortunia | Fortune Teller";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses your camera to take a photo for face readings.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app may access the microphone during video readings.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app accesses your photo library to upload images for readings.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -472,6 +488,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C5B557262EAC1B8D001A31FB /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		C5B5580D2EACC420001A31FB /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5B5571F2EAC1B7D001A31FB /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		C5B5580F2EACC420001A31FB /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5B5571F2EAC1B7D001A31FB /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		C5B558112EACC420001A31FB /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5B5571F2EAC1B7D001A31FB /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -1,0 +1,431 @@
+//
+// Localizable.strings (Spanish)
+// fortunia
+//
+// Created by localization engineer
+//
+
+/* Welcome Messages */
+"welcome_message" = "¡Bienvenido a Fortunia!";
+
+/* Auth Screen */
+"auth_welcome_title" = "Bienvenido a Fortunia";
+"auth_welcome_subtitle" = "Descubre tu fortuna a través de la sabiduría antigua";
+"auth_continue_with_email" = "Continuar con Email";
+"auth_not_now" = "Ahora No";
+"auth_terms" = "Términos de Servicio";
+"auth_privacy" = "Política de Privacidad";
+"auth_by_continuing" = "Al continuar, aceptas nuestros";
+"auth_and" = "y";
+"auth_create_account" = "Crear Cuenta";
+"auth_sign_in" = "Iniciar Sesión";
+"auth_welcome_back" = "Bienvenido de vuelta";
+"auth_join_mystical" = "Únete al viaje místico";
+"auth_email" = "Correo Electrónico";
+"auth_password" = "Contraseña";
+"auth_confirm_password" = "Confirmar Contraseña";
+"auth_already_have_account" = "¿Ya tienes una cuenta?";
+"auth_dont_have_account" = "¿No tienes una cuenta?";
+"auth_sign_up" = "Registrarse";
+"auth_cancel" = "Cancelar";
+"auth_error" = "Error";
+"auth_ok" = "Aceptar";
+
+/* Splash Screen */
+"splash_app_name" = "Fortunia";
+"splash_tagline" = "Descubre Tu Fortuna";
+
+/* Home Screen */
+"home_discover_fortune" = "Descubre Tu Fortuna";
+"home_choose_reading_method" = "Elige tu método de lectura";
+"home_face_reading" = "Lectura Facial";
+"home_face_reading_desc" = "Descubre tu personalidad";
+"home_palm_reading" = "Lectura de Palma";
+"home_palm_reading_desc" = "Lee las líneas de tu vida";
+"home_tarot_cards" = "Cartas del Tarot";
+"home_tarot_cards_desc" = "Obtén orientación de las cartas";
+"home_coffee_reading" = "Lectura de Café";
+"home_coffee_reading_desc" = "Interpreta los posos de café";
+
+/* Result Screen */
+"result_your_face_reading" = "Tu Lectura Facial";
+"result_your_palm_reading" = "Tu Lectura de Palma";
+"result_your_coffee_reading" = "Tu Lectura de Café";
+"result_your_tarot_reading" = "Tu Lectura de Tarot";
+"result_your_reading" = "Tu Lectura Facial"; // Fallback for backward compatibility
+"result_heading" = "Un Viaje de Mil Millas Comienza con un Solo Paso";
+"result_text" = "Las líneas en tu frente sugieren un camino de creatividad y exploración. Tu mandíbula fuerte indica determinación y resistencia ante los desafíos. Confía en tu intuición en las próximas semanas, ya que se presentará una oportunidad significativa para el crecimiento personal. Abraza el cambio, porque te llevará a un futuro más brillante de lo que puedes imaginar.";
+"result_disclaimer" = "Solo con fines de entretenimiento. No sustituye asesoramiento profesional, médico, legal o financiero.";
+"result_share_fortune" = "Compartir Tu Fortuna";
+"result_get_another_reading" = "Obtener Otra Lectura";
+
+/* Processing Screen */
+"processing_reading_fortune" = "Leyendo tu fortuna...";
+"capture_essence" = "Captura Tu Esencia";
+"capture_essence_subtitle" = "Para la mejor lectura, proporciona una foto clara de frente.";
+
+/* Supabase Error Messages */
+"supabase_invalid_image_data" = "Error al comprimir la imagen";
+"supabase_upload_failed" = "Error al subir la imagen";
+"supabase_invalid_url" = "Configuración de URL de Supabase no válida";
+"supabase_function_failed" = "Error en la función de borde";
+"supabase_auth_failed" = "Error de autenticación";
+"supabase_network_error" = "Error de conexión de red";
+"supabase_quota_exceeded" = "Cuota diaria excedida";
+"supabase_ai_failed" = "Error en el procesamiento de IA";
+
+/* Supabase Success Messages */
+"supabase_image_uploaded" = "Imagen subida exitosamente";
+"supabase_function_executed" = "Función de borde ejecutada exitosamente";
+"supabase_auth_success" = "Autenticación exitosa";
+"supabase_quota_consumed" = "Cuota consumida exitosamente";
+
+/* Network Error Messages */
+"network_invalid_url" = "URL no válida";
+"network_no_data" = "No se recibieron datos";
+"network_decoding_error" = "Error al decodificar la respuesta";
+"network_server_error" = "Error del servidor";
+"network_network_error" = "Error de red";
+"network_unknown_error" = "Error desconocido";
+
+/* Language Selector */
+"Select Language" = "Seleccionar Idioma";
+"current_language_desc" = "Cambia el idioma de la aplicación. La aplicación se actualizará inmediatamente.";
+"Current Language:" = "Idioma Actual:";
+"Choose Language:" = "Elige el Idioma:";
+"language_change_info" = "La aplicación se reiniciará el idioma inmediatamente cuando lo cambies.";
+"Language Settings" = "Configuración de Idioma";
+"Change Language" = "Cambiar Idioma";
+"Language" = "Idioma";
+"Profile" = "Perfil";
+
+/* Theme Settings */
+"Theme Settings" = "Configuración de Tema";
+"Theme" = "Tema";
+"processing_error_title" = "Error de procesamiento";
+"ok_button" = "Aceptar";
+"premium_title" = "Premium";
+
+/* Tab Bar */
+"tab_home" = "Inicio";
+"tab_explore" = "Explorar";
+"tab_history" = "Historial";
+"tab_profile" = "Perfil";
+
+/* History Screen */
+"history_title" = "Historial";
+"history_loading" = "Cargando tu historial...";
+"history_empty_title" = "Aún No Hay Lecturas";
+"history_empty_subtitle" = "Tus lecturas de fortuna aparecerán aquí";
+"history_delete" = "Eliminar";
+
+/* Profile Premium Card */
+"unlock_premium" = "Desbloquear Premium";
+"upgrade_to_premium_desc" = "Obtén lecturas ilimitadas y funciones exclusivas";
+
+/* Profile User Section */
+"tap_to_edit_birth_info" = "Toca para editar información de nacimiento";
+
+/* Profile Section Headers */
+"legal" = "Legal";
+"account" = "Cuenta";
+
+/* Actions */
+"sign_out" = "Cerrar Sesión";
+"sign_out_confirmation" = "¿Estás seguro de que quieres cerrar sesión?";
+"cancel_button" = "Cancelar";
+"done_button" = "Hecho";
+
+/* Legal */
+"privacy_policy" = "Política de Privacidad";
+"terms_of_service" = "Términos de Servicio";
+
+/* Quota/Daily Readings */
+"quota_daily_readings" = "Lecturas Diarias";
+"quota_unlimited" = "Ilimitado";
+"quota_remaining" = "restantes";
+"quota_upgrade_button" = "Mejorar";
+
+/* Premium Badge */
+"badge_premium" = "PRO";
+
+/* Birth Info Modal */
+"birth_details_title" = "Tus Datos de Nacimiento";
+"birth_date_picker" = "Fecha de Nacimiento";
+"birth_time_picker" = "Hora de Nacimiento";
+"birth_city_placeholder" = "Ciudad de Nacimiento";
+"birth_country_placeholder" = "País de Nacimiento";
+"birth_save_continue_button" = "Guardar y Continuar";
+"birth_cancel_button" = "Cancelar";
+"birth_save_success" = "Datos de nacimiento guardados exitosamente";
+"birth_save_error" = "Error al guardar los datos de nacimiento";
+"birth_loading" = "Guardando...";
+"birth_next_button" = "Siguiente";
+"birth_date_step_title" = "Fecha y Hora de Nacimiento";
+"birth_date_step_subtitle" = "¿Cuándo naciste?";
+"birth_location_step_title" = "Lugar de Nacimiento";
+"birth_location_step_subtitle" = "¿Dónde naciste?";
+
+/* Face Reading Intro */
+"face_reading_intro_title" = "Lectura Facial";
+"face_reading_intro_desc" = "Descubre los secretos ocultos en tus rasgos faciales. Nuestra IA analiza tus características únicas para revelar información sobre tu personalidad, fortalezas y camino futuro.";
+"face_reading_nav_title" = "Lectura Facial";
+
+/* Palm Reading Intro */
+"palm_reading_intro_title" = "Lectura de Palma";
+"palm_reading_intro_desc" = "Desvela los misterios escritos en tus manos. Nuestra IA analiza las líneas de tu palma para revelar información sobre tu viaje de vida, rasgos de personalidad y posibilidades futuras.";
+"palm_reading_nav_title" = "Lectura de Palma";
+
+/* Coffee Reading Intro */
+"coffee_reading_intro_title" = "Lectura de Café";
+"coffee_reading_intro_desc" = "Interpreta los patrones en los posos de tu café. Nuestra IA analiza las formaciones únicas para proporcionar información sobre tu pasado, presente y futuro.";
+"coffee_reading_nav_title" = "Lectura de Café";
+
+"intro_get_started_button" = "Comenzar";
+
+/* Photo Capture */
+"photo_capture_title" = "Captura Tu Esencia";
+"photo_capture_subtitle_face" = "Para la mejor lectura, proporciona una foto clara de frente de tu rostro.";
+"photo_capture_subtitle_palm" = "Para la mejor lectura, proporciona una foto clara de tu palma con las líneas visibles.";
+"photo_capture_subtitle_coffee" = "Para la mejor lectura, proporciona una foto clara de tu taza de café con los posos visibles.";
+"photo_capture_subtitle" = "Para la mejor lectura, proporciona una foto clara.";
+"photo_take_button" = "Tomar Foto";
+"photo_choose_library_button" = "Elegir de la Biblioteca";
+"photo_nav_title" = "Agregar Foto";
+
+/* Processing Screen */
+"processing_reading_message" = "Leyendo tu fortuna...";
+
+/* Coming Soon */
+"coming_soon_title" = "Próximamente";
+"coming_soon_subtitle" = "Estamos trabajando en algo mágico para ti.";
+
+/* Fortune Reading Types (Model) */
+"reading_type_face" = "Lectura Facial";
+"reading_type_face_desc" = "Descubre tu personalidad a través de tus rasgos faciales";
+"reading_type_palm" = "Lectura de Palma";
+"reading_type_palm_desc" = "Lee las líneas de tu vida y destino";
+"reading_type_tarot" = "Lectura de Tarot";
+"reading_type_tarot_desc" = "Obtén orientación de las cartas del tarot antiguas";
+"reading_type_coffee" = "Lectura de Café";
+"reading_type_coffee_desc" = "Interpreta tu futuro a partir de los posos de café";
+
+/* Cultural Origins */
+"cultural_origin_chinese" = "Chino";
+"cultural_origin_chinese_desc" = "Tradiciones de adivinación china antigua";
+"cultural_origin_middle_eastern" = "Medio Oriente";
+"cultural_origin_middle_eastern_desc" = "Prácticas místicas del Medio Oriente";
+"cultural_origin_european" = "Europeo";
+"cultural_origin_european_desc" = "Métodos europeos de adivinación";
+"cultural_origin_turkish" = "Turco";
+
+/* Debug Logging Messages */
+"debug_auth_success" = "Éxito";
+"debug_auth_failed" = "Falló";
+"debug_auth_signup" = "Registro";
+"debug_auth_signin" = "Iniciar Sesión";
+"debug_auth_signout" = "Cerrar Sesión";
+"debug_auth_reset" = "Restablecer Contraseña";
+"debug_auth_refresh" = "Actualizar Sesión";
+"debug_auth_delete" = "Eliminar Cuenta";
+
+"debug_ai_success" = "Procesamiento completado";
+"debug_ai_failed" = "Procesamiento falló";
+
+"debug_network_success" = "Solicitud exitosa";
+"debug_network_failed" = "Solicitud falló";
+
+"debug_storage_success" = "Operación completada";
+"debug_storage_failed" = "Operación falló";
+"debug_storage_upload" = "Subir";
+"debug_storage_download" = "Descargar";
+"debug_storage_delete" = "Eliminar";
+
+"debug_edge_success" = "Función ejecutada";
+"debug_edge_failed" = "Función falló";
+
+"debug_category_supabase" = "SUPABASE";
+"debug_category_analytics" = "ANALÍTICAS";
+"debug_category_performance" = "RENDIMIENTO";
+
+/* Analytics Event Names */
+"analytics_app_open" = "app_open";
+"analytics_signup_completed" = "signup_completed";
+"analytics_reading_requested" = "reading_requested";
+"analytics_reading_completed" = "reading_completed";
+"analytics_share_tapped" = "share_tapped";
+"analytics_subscription_purchased" = "subscription_purchased";
+"analytics_paywall_shown" = "paywall_shown";
+"analytics_session_start" = "session_start";
+"analytics_session_end" = "session_end";
+"analytics_error_occurred" = "error_occurred";
+
+/* Analytics Parameter Names */
+"analytics_param_method" = "method";
+"analytics_param_reading_type" = "reading_type";
+"analytics_param_cultural_origin" = "cultural_origin";
+"analytics_param_is_premium" = "is_premium";
+"analytics_param_platform" = "platform";
+"analytics_param_tier" = "tier";
+"analytics_param_trigger" = "trigger";
+"analytics_param_session_id" = "session_id";
+"analytics_param_duration" = "duration";
+"analytics_param_error_type" = "error_type";
+"analytics_param_error_message" = "error_message";
+"analytics_param_context" = "context";
+
+/* Analytics Parameter Values */
+"analytics_value_email" = "email";
+"analytics_value_apple" = "apple";
+"analytics_value_google" = "google";
+"analytics_value_guest" = "guest";
+"analytics_value_face" = "face";
+"analytics_value_palm" = "palm";
+"analytics_value_tarot" = "tarot";
+"analytics_value_coffee" = "coffee";
+"analytics_value_chinese" = "chinese";
+"analytics_value_middle_eastern" = "middle_eastern";
+"analytics_value_european" = "european";
+"analytics_value_turkish" = "turkish";
+"analytics_value_facebook" = "facebook";
+"analytics_value_twitter" = "twitter";
+"analytics_value_instagram" = "instagram";
+"analytics_value_whatsapp" = "whatsapp";
+"analytics_value_telegram" = "telegram";
+"analytics_value_basic" = "basic";
+"analytics_value_premium" = "premium";
+"analytics_value_pro" = "pro";
+"analytics_value_quota_exceeded" = "quota_exceeded";
+"analytics_value_reading_completed" = "reading_completed";
+"analytics_value_subscription_purchased" = "subscription_purchased";
+"analytics_value_paywall_shown" = "paywall_shown";
+"analytics_value_auth_error" = "auth_error";
+"analytics_value_network_error" = "network_error";
+"analytics_value_ai_error" = "ai_error";
+"analytics_value_general_error" = "general_error";
+"analytics_value_crash_error" = "crash_error";
+
+/* Preview Display Names */
+"preview_light_mode" = "Modo Claro";
+"preview_dark_mode" = "Modo Oscuro";
+
+/* Photo Capture */
+"photo_capture_title" = "Añade Tu Foto";
+"photo_capture_subtitle" = "Toma una foto clara o elige de tu biblioteca";
+"photo_take_button" = "Tomar Foto";
+"photo_choose_library_button" = "Elegir de Biblioteca";
+"photo_continue_button" = "Continuar";
+"photo_retake_button" = "Volver a Tomar";
+"photo_preview_placeholder" = "Tu foto aparecerá aquí";
+"photo_uploading" = "Subiendo foto...";
+"photo_error_title" = "Error de Foto";
+"photo_error_ok" = "Aceptar";
+"photo_upload_error" = "Error al subir la foto. Inténtalo de nuevo.";
+"photo_invalid_image" = "Imagen inválida seleccionada. Inténtalo de nuevo.";
+"photo_camera_permission" = "cámara";
+"photo_library_permission" = "biblioteca de fotos";
+"photo_permission_denied" = "Permiso denegado para %@. Por favor habilita el acceso en Configuración.";
+
+/* Share Functionality */
+"share_fortune_title" = "Mi Lectura de Fortuna";
+"share_reading_type" = "Tipo de Lectura";
+"share_app_attribution" = "Obtén tu propia lectura en fortunia.app";
+"share_error_title" = "Error de Compartir";
+"share_error_ok" = "Aceptar";
+"share_error_generation_failed" = "Error al generar tarjeta de compartir: %@";
+"share_error_invalid_url" = "URL de tarjeta de compartir inválida";
+"share_error_invalid_image" = "Datos de imagen de tarjeta de compartir inválidos";
+"share_error_network" = "Error de red al cargar tarjeta de compartir";
+"result_generating_share_card" = "Generando Tarjeta de Compartir...";
+"result_sample_text" = "Tu viaje místico revela gran sabiduría y prosperidad por delante. Las estrellas se alinean a tu favor, trayendo oportunidades de crecimiento y felicidad.";
+
+/* Network Connectivity */
+"no_internet_title" = "Sin Conexión a Internet";
+"no_internet_message" = "Por favor verifica tu red e inténtalo de nuevo.";
+"try_again_button" = "Intentar de Nuevo";
+"close_button" = "Cerrar";
+"network_status_connected" = "Conectado";
+"network_status_disconnected" = "Desconectado";
+
+/* Component Test Strings */
+"test_primary_button" = "Botón Primario";
+"test_secondary_button" = "Botón Secundario";
+"test_loading_button" = "Cargando...";
+"test_disabled_button" = "Deshabilitado";
+
+/* Quota Management Strings */
+"quota_loading" = "Cargando...";
+"quota_exhausted_message" = "Has alcanzado tu límite diario. Actualiza para más lecturas.";
+
+/* Reading Start View */
+"reading_start_ready_title" = "¿Listo para Comenzar?";
+"reading_start_quota_warning" = "Esto usará una de tus lecturas gratuitas diarias";
+"reading_start_reading_type_label" = "Tipo de Lectura:";
+"reading_start_cultural_origin_label" = "Origen Cultural:";
+"reading_start_processing_time" = "Tiempo de procesamiento: ~10 segundos";
+"reading_start_processing" = "Procesando...";
+"reading_start_button" = "Comenzar Lectura";
+"reading_start_cancel" = "Cancelar";
+"reading_start_error_title" = "Error";
+"reading_start_ok" = "Aceptar";
+"reading_start_nav_title" = "Configuración de Lectura";
+"reading_start_checking_quota" = "Verificando cuota...";
+"reading_start_remaining_readings" = "%d lecturas restantes hoy";
+"reading_start_not_authenticated" = "Usuario no autenticado";
+"reading_start_failed" = "Error al comenzar lectura: %@";
+
+/* Paywall */
+"paywall_title" = "Desbloquea Lecturas Ilimitadas ✨";
+"paywall_subtitle" = "Obtén lecturas ilimitadas, informes detallados y funciones premium";
+"paywall_monthly_title" = "Mensual";
+"paywall_yearly_title" = "Anual";
+"paywall_monthly_price" = "$9";
+"paywall_yearly_price" = "$55";
+"paywall_per_month" = "por mes";
+"paywall_per_year" = "por año";
+"paywall_monthly_tagline" = "Mejor para usuarios ocasionales";
+"paywall_yearly_tagline" = "Mejor valor para usuarios regulares";
+"paywall_upgrade_button" = "Actualizar a Premium";
+"paywall_restore_button" = "Restaurar Compras";
+"paywall_close_button" = "Cerrar";
+"paywall_coming_soon_title" = "Premium Próximamente";
+"paywall_coming_soon_message" = "Las funciones premium estarán disponibles después de la revisión de App Store. ¡Gracias por tu paciencia!";
+"paywall_save_annually" = "Ahorra 40% anualmente";
+"paywall_recommended" = "RECOMENDADO";
+"paywall_feature_unlimited" = "Lecturas diarias ilimitadas";
+"paywall_feature_reports" = "Informes detallados de 10 páginas";
+"paywall_feature_share_cards" = "Tarjetas de compartir HD (sin marca de agua)";
+"paywall_feature_history" = "Historial de lecturas y tendencias";
+"paywall_feature_priority" = "Procesamiento prioritario (< 5 segundos)";
+"paywall_feature_adfree" = "Experiencia sin anuncios";
+
+/* Permission Modals */
+"permission_camera_title" = "Permitir Acceso a la Cámara";
+"permission_camera_message" = "Necesitamos acceso a tu cámara para capturar fotos para tu lectura de fortuna 🌙";
+"permission_library_title" = "Permitir Acceso a la Biblioteca de Fotos";
+"permission_library_message" = "Necesitamos acceso a tu biblioteca de fotos para elegir imágenes para tu lectura de fortuna 🌙";
+"permission_allow_button" = "Permitir Acceso";
+"permission_not_now_button" = "Ahora No";
+"permission_cancel_button" = "Cancelar";
+
+/* Permission Denied Alerts */
+"permission_camera_denied_title" = "Se Necesita Acceso a la Cámara";
+"permission_camera_denied_message" = "Por favor habilita el acceso a la cámara en Configuración para continuar tu viaje místico.";
+"permission_library_denied_title" = "Se Necesita Acceso a la Biblioteca de Fotos";
+"permission_library_denied_message" = "Por favor habilita el acceso a la biblioteca de fotos en Configuración para continuar tu viaje místico.";
+"permission_open_settings_button" = "Abrir Configuración";
+
+/* Generic Alerts */
+"alert_success_title" = "Éxito";
+"alert_error_title" = "Error";
+"alert_ok_button" = "Aceptar";
+
+/* Constants Error Messages */
+"error_network" = "Error de conexión de red. Por favor verifica tu conexión a internet.";
+"error_quota_exceeded" = "Cuota diaria excedida. Actualiza a Premium para lecturas ilimitadas.";
+"error_image_processing" = "Error al procesar imagen. Inténtalo de nuevo.";
+"error_ai_processing" = "Error en el procesamiento de IA. Inténtalo de nuevo.";
+"error_unknown" = "Ocurrió un error inesperado. Inténtalo de nuevo.";
+"success_reading_completed" = "¡Tu lectura de fortuna está lista!";
+"success_image_uploaded" = "Imagen subida exitosamente";
+"success_quota_consumed" = "Lectura completada exitosamente";

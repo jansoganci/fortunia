@@ -109,6 +109,9 @@ APIKeys.swift
 supabase/.env
 supabase/.env.local
 
+# Info.plist with secrets (use Info.plist.example instead)
+Info.plist
+
 # Adapty
 adapty_config.json
 

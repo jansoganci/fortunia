@@ -87,13 +87,13 @@ struct SecondaryButton: View {
 struct Buttons_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 20) {
-            PrimaryButton(title: "Primary Button", action: {})
+            PrimaryButton(title: NSLocalizedString("test_primary_button", comment: "Primary button test"), action: {})
             
-            SecondaryButton(title: "Secondary Button", action: {})
+            SecondaryButton(title: NSLocalizedString("test_secondary_button", comment: "Secondary button test"), action: {})
             
-            PrimaryButton(title: "Loading...", action: {}, isLoading: true)
+            PrimaryButton(title: NSLocalizedString("test_loading_button", comment: "Loading button test"), action: {}, isLoading: true)
             
-            PrimaryButton(title: "Disabled", action: {}, isDisabled: true)
+            PrimaryButton(title: NSLocalizedString("test_disabled_button", comment: "Disabled button test"), action: {}, isDisabled: true)
         }
         .padding()
     }

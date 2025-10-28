@@ -9,23 +9,27 @@ import SwiftUI
 
 // MARK: - Main Tab View
 struct MainTabView: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
+    @EnvironmentObject var themeManager: ThemeManager
     @State private var selectedTab = 0
     
     var body: some View {
         TabView(selection: $selectedTab) {
             // Home Tab
-            HomeView()
-                .tabItem {
-                    Image(systemName: selectedTab == 0 ? "house.fill" : "house")
-                    Text("Home")
-                }
-                .tag(0)
+            NavigationView {
+                HomeView()
+            }
+            .tabItem {
+                Image(systemName: selectedTab == 0 ? "house.fill" : "house")
+                Text("tab_home".localized)
+            }
+            .tag(0)
             
             // Explore Tab
             ExploreView()
                 .tabItem {
                     Image(systemName: selectedTab == 1 ? "sparkles" : "sparkles")
-                    Text("Explore")
+                    Text("tab_explore".localized)
                 }
                 .tag(1)
             
@@ -33,7 +37,7 @@ struct MainTabView: View {
             HistoryView()
                 .tabItem {
                     Image(systemName: selectedTab == 2 ? "clock.fill" : "clock")
-                    Text("History")
+                    Text("tab_history".localized)
                 }
                 .tag(2)
             
@@ -41,7 +45,7 @@ struct MainTabView: View {
             ProfileView()
                 .tabItem {
                     Image(systemName: selectedTab == 3 ? "person.circle.fill" : "person.circle")
-                    Text("Profile")
+                    Text("tab_profile".localized)
                 }
                 .tag(3)
         }
@@ -74,230 +78,338 @@ struct MainTabView: View {
     }
 }
 
-// MARK: - Home View
-struct HomeView: View {
-    var body: some View {
-        NavigationView {
-            ZStack {
-                // Background
-                Color.backgroundPrimary
-                    .ignoresSafeArea()
-                
-                ScrollView {
-                    VStack(spacing: Spacing.lg) {
-                        // Header
-                        VStack(spacing: Spacing.sm) {
-                            Text("Discover Your Fortune")
-                                .font(AppTypography.heading1)
-                                .foregroundColor(.textPrimary)
-                                .multilineTextAlignment(.center)
-                            
-                            Text("Choose your reading method")
-                                .font(AppTypography.bodyMedium)
-                                .foregroundColor(.textSecondary)
-                                .multilineTextAlignment(.center)
-                        }
-                        .padding(.top, Spacing.lg)
-                        
-                        // Fortune Types Grid
-                        LazyVGrid(columns: [
-                            GridItem(.flexible()),
-                            GridItem(.flexible())
-                        ], spacing: Spacing.md) {
-                            FortuneTypeCard(
-                                title: "Face Reading",
-                                description: "Discover your personality",
-                                icon: "face.smiling",
-                                color: .primary
-                            )
-                            
-                            FortuneTypeCard(
-                                title: "Palm Reading",
-                                description: "Read your life lines",
-                                icon: "hand.raised.fill",
-                                color: .accent
-                            )
-                            
-                            FortuneTypeCard(
-                                title: "Tarot Cards",
-                                description: "Get guidance from cards",
-                                icon: "rectangle.portrait.fill",
-                                color: .primary
-                            )
-                            
-                            FortuneTypeCard(
-                                title: "Coffee Reading",
-                                description: "Interpret coffee grounds",
-                                icon: "cup.and.saucer.fill",
-                                color: .accent
-                            )
-                        }
-                        .padding(.horizontal, Spacing.md)
-                        
-                        // Daily Quota
-                        QuotaCard()
-                            .padding(.horizontal, Spacing.md)
-                    }
-                }
-            }
-            .navigationBarHidden(true)
-        }
-    }
-}
-
 // MARK: - Explore View
-struct ExploreView: View {
-    var body: some View {
-        NavigationView {
-            ZStack {
-                Color.backgroundPrimary
-                    .ignoresSafeArea()
-                
-                VStack {
-                    Text("Explore")
-                        .font(AppTypography.heading1)
-                        .foregroundColor(.textPrimary)
-                    
-                    Text("Discover new fortune reading methods")
-                        .font(AppTypography.bodyMedium)
-                        .foregroundColor(.textSecondary)
-                        .multilineTextAlignment(.center)
-                    
-                    Spacer()
-                }
-                .padding(.top, Spacing.lg)
-            }
-            .navigationBarHidden(true)
-        }
-    }
-}
+// Now implemented with daily horoscope feature
+// See ExploreView.swift for full implementation
 
 // MARK: - History View
-struct HistoryView: View {
-    var body: some View {
-        NavigationView {
-            ZStack {
-                Color.backgroundPrimary
-                    .ignoresSafeArea()
-                
-                VStack {
-                    Text("History")
-                        .font(AppTypography.heading1)
-                        .foregroundColor(.textPrimary)
-                    
-                    Text("Your past readings")
-                        .font(AppTypography.bodyMedium)
-                        .foregroundColor(.textSecondary)
-                        .multilineTextAlignment(.center)
-                    
-                    Spacer()
-                }
-                .padding(.top, Spacing.lg)
-            }
-            .navigationBarHidden(true)
-        }
-    }
-}
+// Note: HistoryView is now in its own file (Views/Screens/HistoryView.swift)
+// Import is handled automatically by SwiftUI
 
 // MARK: - Profile View
 struct ProfileView: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
+    @EnvironmentObject var themeManager: ThemeManager
+    @StateObject private var authService = AuthService.shared
+    @State private var selectedLanguage: String = ""
+    @State private var selectedTheme: String = ""
+    @State private var showSignOutAlert = false
+    @State private var showBirthInfoModal = false
+    @State private var showPaywall = false
+    @State private var isPremium = false
+    
+    // Available languages for dropdown
+    private let languages = [
+        (code: "en", name: "English"),
+        (code: "es", name: "Español")
+    ]
+    
+    // Available themes for dropdown
+    private let themes = [
+        (code: "light", name: "Light", icon: "sun.max.fill"),
+        (code: "dark", name: "Dark", icon: "moon.fill"),
+        (code: "system", name: "System", icon: "circle.lefthalf.filled")
+    ]
+    
+    // Check if user is premium
+    private func checkPremiumStatus() {
+        isPremium = QuotaManager.shared.isPremiumUser
+    }
+    
     var body: some View {
         NavigationView {
             ZStack {
                 Color.backgroundPrimary
                     .ignoresSafeArea()
                 
-                VStack {
-                    Text("Profile")
-                        .font(AppTypography.heading1)
-                        .foregroundColor(.textPrimary)
+                List {
+                    premiumSection
+                    userSection
+                    languageSection
+                    themeSection
+                    legalSection
+                    signOutSection
+                }
+                .listStyle(InsetGroupedListStyle())
+            }
+            .navigationTitle("Profile".localized)
+            .navigationBarTitleDisplayMode(.large)
+        }
+        .onAppear {
+            selectedLanguage = localizationManager.currentLanguage
+            selectedTheme = themeManager.currentTheme
+            checkPremiumStatus()
+        }
+        .onChange(of: localizationManager.currentLanguage) { newValue in
+            selectedLanguage = newValue
+        }
+        .onChange(of: themeManager.currentTheme) { newValue in
+            selectedTheme = newValue
+        }
+        .sheet(isPresented: $showBirthInfoModal) {
+            BirthInfoModalView(onComplete: {
+                showBirthInfoModal = false
+            })
+        }
+        .fullScreenCover(isPresented: $showPaywall) {
+            PaywallView()
+        }
+        .alert("sign_out_confirmation".localized, isPresented: $showSignOutAlert) {
+            Button("cancel_button".localized, role: .cancel) { }
+            Button("sign_out".localized, role: .destructive) {
+                signOut()
+            }
+        }
+    }
+    
+    // MARK: - Private Methods
+    
+    private var premiumSection: some View {
+        Group {
+            if !isPremium {
+                Section {
+                    Button(action: { showPaywall = true }) {
+                        HStack {
+                            Image(systemName: "crown.fill")
+                                .foregroundColor(.accent)
+                                .font(.system(size: 24))
+                            
+                            VStack(alignment: .leading, spacing: Spacing.xs) {
+                                Text("unlock_premium".localized)
+                                    .font(AppTypography.heading3)
+                                    .foregroundColor(.textPrimary)
+                                
+                                Text("upgrade_to_premium_desc".localized)
+                                    .font(AppTypography.bodySmall)
+                                    .foregroundColor(.textSecondary)
+                            }
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.textSecondary)
+                        }
+                        .padding(.vertical, Spacing.sm)
+                    }
+                }
+            }
+        }
+    }
+    
+    private var userSection: some View {
+        Section {
+            Button(action: { showBirthInfoModal = true }) {
+                HStack(spacing: Spacing.md) {
+                    Image(systemName: "person.circle.fill")
+                        .foregroundColor(.primary)
+                        .frame(width: 24)
                     
-                    Text("Manage your account")
-                        .font(AppTypography.bodyMedium)
-                        .foregroundColor(.textSecondary)
-                        .multilineTextAlignment(.center)
+                    VStack(alignment: .leading, spacing: Spacing.xs) {
+                        Text(getUserEmail())
+                            .font(AppTypography.bodyMedium)
+                            .foregroundColor(.textPrimary)
+                        
+                        Text("tap_to_edit_birth_info".localized)
+                            .font(AppTypography.caption)
+                            .foregroundColor(.textSecondary)
+                    }
                     
                     Spacer()
                 }
-                .padding(.top, Spacing.lg)
+                .padding(.vertical, Spacing.xs)
             }
-            .navigationBarHidden(true)
         }
     }
-}
-
-// MARK: - Fortune Type Card
-struct FortuneTypeCard: View {
-    let title: String
-    let description: String
-    let icon: String
-    let color: Color
     
-    var body: some View {
-        Button(action: {
-            // TODO: Navigate to fortune reading
-        }) {
-            VStack(spacing: Spacing.md) {
-                // Icon
-                Image(systemName: icon)
-                    .font(.system(size: 32, weight: .medium))
-                    .foregroundColor(.white)
-                    .frame(width: 60, height: 60)
-                    .background(
-                        Circle()
-                            .fill(
-                                LinearGradient(
-                                    colors: [color, color.opacity(0.7)],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
-                    )
+    private var languageSection: some View {
+        Section(header: Text("Language Settings".localized)) {
+            HStack(spacing: Spacing.md) {
+                Image(systemName: "globe")
+                    .foregroundColor(.primary)
+                    .frame(width: 24)
                 
-                // Text
-                VStack(spacing: Spacing.xs) {
-                    Text(title)
-                        .font(AppTypography.heading4)
-                        .foregroundColor(.textPrimary)
-                        .multilineTextAlignment(.center)
-                    
-                    Text(description)
-                        .font(AppTypography.caption)
-                        .foregroundColor(.textSecondary)
-                        .multilineTextAlignment(.center)
+                Text("Language".localized)
+                    .font(AppTypography.bodyMedium)
+                    .foregroundColor(.textPrimary)
+                
+                Spacer()
+                
+                Menu {
+                    ForEach(languages, id: \.code) { language in
+                        Button(action: {
+                            selectedLanguage = language.code
+                            localizationManager.setLanguage(language.code)
+                        }) {
+                            HStack {
+                                Text(language.name)
+                                if selectedLanguage == language.code {
+                                    Spacer()
+                                    Image(systemName: "checkmark")
+                                        .foregroundColor(.primary)
+                                }
+                            }
+                        }
+                    }
+                } label: {
+                    HStack(spacing: Spacing.xs) {
+                        Text(selectedLanguageDisplayName)
+                            .font(AppTypography.bodyMedium)
+                            .foregroundColor(.primary)
+                        
+                        Image(systemName: "chevron.down")
+                            .font(.system(size: 12))
+                            .foregroundColor(.textSecondary)
+                    }
                 }
             }
-            .padding(Spacing.md)
-            .background(Color.surface)
-            .cornerRadius(CornerRadius.lg)
-            .shadow(
-                color: Elevation.level2.color,
-                radius: Elevation.level2.radius,
-                x: Elevation.level2.x,
-                y: Elevation.level2.y
-            )
+            .padding(.vertical, Spacing.xs)
         }
-        .buttonStyle(PlainButtonStyle())
+    }
+    
+    private var themeSection: some View {
+        Section(header: Text("Theme Settings".localized)) {
+            HStack(spacing: Spacing.md) {
+                Image(systemName: "paintbrush.fill")
+                    .foregroundColor(.primary)
+                    .frame(width: 24)
+                
+                Text("Theme".localized)
+                    .font(AppTypography.bodyMedium)
+                    .foregroundColor(.textPrimary)
+                
+                Spacer()
+                
+                Menu {
+                    ForEach(themes, id: \.code) { theme in
+                        Button(action: {
+                            selectedTheme = theme.code
+                            themeManager.setTheme(theme.code)
+                        }) {
+                            HStack {
+                                Image(systemName: theme.icon)
+                                    .foregroundColor(.primary)
+                                Text(theme.name)
+                                if selectedTheme == theme.code {
+                                    Spacer()
+                                    Image(systemName: "checkmark")
+                                        .foregroundColor(.primary)
+                                }
+                            }
+                        }
+                    }
+                } label: {
+                    HStack(spacing: Spacing.xs) {
+                        Text(selectedThemeDisplayName)
+                            .font(AppTypography.bodyMedium)
+                            .foregroundColor(.primary)
+                        
+                        Image(systemName: "chevron.down")
+                            .font(.system(size: 12))
+                            .foregroundColor(.textSecondary)
+                    }
+                }
+            }
+            .padding(.vertical, Spacing.xs)
+        }
+    }
+    
+    private var legalSection: some View {
+        Section(header: Text("legal".localized)) {
+            NavigationLink(destination: WebView(url: "https://fortunia.app/privacy")) {
+                ProfileRow(
+                    icon: "hand.raised.fill",
+                    title: "privacy_policy".localized,
+                    showChevron: false
+                )
+            }
+            
+            NavigationLink(destination: WebView(url: "https://fortunia.app/terms")) {
+                ProfileRow(
+                    icon: "doc.text.fill",
+                    title: "terms_of_service".localized,
+                    showChevron: false
+                )
+            }
+        }
+    }
+    
+    private var signOutSection: some View {
+        Section {
+            Button(action: { showSignOutAlert = true }) {
+                ProfileRow(
+                    icon: "rectangle.portrait.and.arrow.right",
+                    title: "sign_out".localized,
+                    showChevron: false,
+                    isDestructive: true
+                )
+            }
+        }
+    }
+    
+    private func getUserEmail() -> String {
+        guard let supabase = SupabaseService.shared.supabase else {
+            return "User"
+        }
+        return supabase.auth.currentUser?.email ?? "User"
+    }
+    
+    private func signOut() {
+        Task {
+            do {
+                try await authService.signOut()
+            } catch {
+                print("Sign out error: \(error)")
+            }
+        }
+    }
+    
+    // Computed property for language display name
+    private var selectedLanguageDisplayName: String {
+        return languages.first(where: { $0.code == selectedLanguage })?.name ?? "English"
+    }
+    
+    // Computed property for theme display name
+    private var selectedThemeDisplayName: String {
+        return themes.first(where: { $0.code == selectedTheme })?.name ?? "System"
     }
 }
 
 // MARK: - Quota Card
 struct QuotaCard: View {
-    @State private var dailyQuotaUsed = 1
+    @State private var remainingQuota = 0
     @State private var dailyQuotaLimit = 3
     @State private var isPremium = false
+    @State private var isLoading = false
+    @State private var showPaywall = false
+    @State private var hasLoadedOnce = false
+    @State private var lastLoadTime: Date?
     
     var body: some View {
         VStack(spacing: Spacing.md) {
             HStack {
                 VStack(alignment: .leading, spacing: Spacing.xs) {
-                    Text("Daily Readings")
+                    Text(LocalizedStringKey("quota_daily_readings")) // localized
                         .font(AppTypography.heading4)
                         .foregroundColor(.textPrimary)
                     
-                    Text(isPremium ? "Unlimited" : "\(dailyQuotaUsed)/\(dailyQuotaLimit) remaining")
-                        .font(AppTypography.bodySmall)
-                        .foregroundColor(.textSecondary)
+                    if isLoading {
+                        HStack {
+                            ProgressView()
+                                .scaleEffect(0.8)
+                            Text(NSLocalizedString("quota_loading", comment: "Loading..."))
+                                .font(AppTypography.bodySmall)
+                                .foregroundColor(.textSecondary)
+                        }
+                    } else if isPremium {
+                        Text(NSLocalizedString("quota_unlimited", comment: "Unlimited"))
+                            .font(AppTypography.bodySmall)
+                            .foregroundColor(.textSecondary)
+                    } else {
+                        let quotaUsed = dailyQuotaLimit - remainingQuota
+                        Text("\(quotaUsed)/\(dailyQuotaLimit) " + NSLocalizedString("quota_remaining", comment: "remaining"))
+                            .font(AppTypography.bodySmall)
+                            .foregroundColor(.textSecondary)
+                    }
                 }
                 
                 Spacer()
@@ -305,19 +417,32 @@ struct QuotaCard: View {
                 if isPremium {
                     PremiumBadge()
                 } else {
-                    Button("Upgrade") {
-                        // TODO: Show paywall
+                    Button(NSLocalizedString("quota_upgrade_button", comment: "Upgrade")) {
+                        showPaywall = true
                     }
                     .font(AppTypography.caption)
                     .foregroundColor(.primary)
                 }
             }
             
-            if !isPremium {
+            if !isPremium && !isLoading {
                 // Progress Bar
-                ProgressView(value: Double(dailyQuotaUsed), total: Double(dailyQuotaLimit))
+                let quotaUsed = dailyQuotaLimit - remainingQuota
+                ProgressView(value: Double(quotaUsed), total: Double(dailyQuotaLimit))
                     .progressViewStyle(LinearProgressViewStyle(tint: .primary))
                     .frame(height: 8)
+                
+                // Quota exhausted message
+                if remainingQuota == 0 {
+                    HStack {
+                        Image(systemName: "lock.fill")
+                            .foregroundColor(.orange)
+                        Text(NSLocalizedString("quota_exhausted_message", comment: "You've reached your daily limit. Upgrade for more readings."))
+                            .font(AppTypography.caption)
+                            .foregroundColor(.orange)
+                    }
+                    .padding(.top, Spacing.xs)
+                }
             }
         }
         .padding(Spacing.md)
@@ -329,6 +454,97 @@ struct QuotaCard: View {
             x: Elevation.level2.x,
             y: Elevation.level2.y
         )
+        .task {
+            await loadQuotaAsyncIfNeeded()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            // Refresh quota when app comes to foreground (with cooldown)
+            Task {
+                await loadQuotaAsyncIfNeeded()
+            }
+        }
+        .sheet(isPresented: $showPaywall) {
+            PaywallView()
+        }
+    }
+    
+    // MARK: - Private Methods
+    
+    /// Load quota only if not recently loaded (within 5 minutes)
+    private func loadQuotaAsyncIfNeeded() async {
+        // Skip if already loaded within cooldown period
+        if let lastLoadTime = lastLoadTime,
+           Date().timeIntervalSince(lastLoadTime) < 300 {
+            DebugLogger.shared.quota("QuotaCard: Skipping fetch (within cooldown period)")
+            return
+        }
+        
+        await loadQuotaAsync()
+    }
+    
+    private func loadQuotaAsync() async {
+        isLoading = true
+        
+        do {
+            let remaining = try await QuotaManager.shared.fetchQuota()
+            
+            await MainActor.run {
+                self.remainingQuota = remaining
+                self.isLoading = false
+                self.hasLoadedOnce = true
+                self.lastLoadTime = Date()
+            }
+            
+            // Log analytics
+            AnalyticsService.shared.logEvent("quota_fetch", parameters: [
+                "remaining": remaining
+            ])
+            
+        } catch {
+            DebugLogger.shared.warning("Failed to fetch quota: \(error.localizedDescription)")
+            
+            await MainActor.run {
+                // Fallback to cached quota
+                self.remainingQuota = QuotaManager.shared.getCachedQuota()
+                self.isLoading = false
+                // Still update timestamp even on error to prevent rapid retries
+                self.lastLoadTime = Date()
+            }
+        }
+    }
+    
+    /// Refresh quota data (call this after consuming quota)
+    /// This bypasses the cooldown to ensure fresh data after quota consumption
+    func refreshQuota() {
+        Task {
+            isLoading = true
+            
+            do {
+                let remaining = try await QuotaManager.shared.fetchQuota(forceRefresh: true)
+                
+                await MainActor.run {
+                    self.remainingQuota = remaining
+                    self.isLoading = false
+                    self.hasLoadedOnce = true
+                    self.lastLoadTime = Date()
+                }
+                
+                // Log analytics
+                AnalyticsService.shared.logEvent("quota_refreshed", parameters: [
+                    "remaining": remaining
+                ])
+                
+            } catch {
+                DebugLogger.shared.warning("Failed to refresh quota: \(error.localizedDescription)")
+                
+                await MainActor.run {
+                    // Fallback to cached quota
+                    self.remainingQuota = QuotaManager.shared.getCachedQuota()
+                    self.isLoading = false
+                    self.lastLoadTime = Date()
+                }
+            }
+        }
     }
 }
 
@@ -338,7 +554,7 @@ struct PremiumBadge: View {
         HStack(spacing: 4) {
             Image(systemName: "crown.fill")
                 .font(.system(size: 12))
-            Text("PRO")
+            Text(NSLocalizedString("badge_premium", comment: "PRO")) // localized
                 .font(AppTypography.caption)
                 .fontWeight(.bold)
         }
@@ -362,11 +578,11 @@ struct MainTabView_Previews: PreviewProvider {
         Group {
             MainTabView()
                 .preferredColorScheme(.light)
-                .previewDisplayName("Light Mode")
+                .previewDisplayName(NSLocalizedString("preview_light_mode", comment: "Light mode preview"))
             
             MainTabView()
                 .preferredColorScheme(.dark)
-                .previewDisplayName("Dark Mode")
+                .previewDisplayName(NSLocalizedString("preview_dark_mode", comment: "Dark mode preview"))
         }
     }
 }

@@ -101,17 +101,20 @@ enum NetworkError: Error, LocalizedError {
     var errorDescription: String? {
         switch self {
         case .invalidURL:
-            return "Invalid URL"
+            return NSLocalizedString("network_invalid_url", comment: "Invalid URL") // localized
         case .noData:
-            return "No data received"
+            return NSLocalizedString("network_no_data", comment: "No data received") // localized
         case .decodingError:
-            return "Failed to decode response"
+            return NSLocalizedString("network_decoding_error", comment: "Failed to decode response") // localized
         case .serverError(let code):
-            return "Server error: \(code)"
+            let localizedServerError = NSLocalizedString("network_server_error", comment: "Server error") // localized
+            return "\(localizedServerError): \(code)"
         case .networkError(let error):
-            return "Network error: \(error.localizedDescription)"
+            let localizedNetworkError = NSLocalizedString("network_network_error", comment: "Network error") // localized
+            return "\(localizedNetworkError): \(error.localizedDescription)"
         case .unknown(let error):
-            return "Unknown error: \(error.localizedDescription)"
+            let localizedUnknownError = NSLocalizedString("network_unknown_error", comment: "Unknown error") // localized
+            return "\(localizedUnknownError): \(error.localizedDescription)"
         }
     }
 }
